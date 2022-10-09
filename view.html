@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" class="html__body">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/2c471e2012.js"
+      crossorigin="anonymous"
+    ></script>
+    <link href="/dist/output.css" rel="stylesheet" />
+    <script defer type="module" src="src/js/view.js"></script>
+    <title>Rest Countries</title>
+  </head>
+  <body class="font-body-400 dark:bg-darkElements">
+    <!-- nav section -->
+    <header>
+      <nav class="dark:bg-darkBackground bg-white shadow-md">
+        <div class="flex justify-between px-2 py-4">
+          <h1
+            class="font-bold pl-4 ml-3 text-lg md:pl-5 md:ml-5 md:text-2xl hover:cursor-pointer head__btn dark:text-darkText"
+          >
+            Where in the World?
+          </h1>
+          <div
+            class="flex items-center pr-3 mr-3 md:pr-5 md:mr-5 hover:cursor-pointer icon__body"
+          >
+            <i class="fa-regular fa-moon mr-1 md:mr-2 dark:text-darkText"></i>
+            <p class="font-semibold dark:text-darkText dark__text">Dark Mode</p>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- Back section -->
+    <div class="mt-14 pl-10">
+      <button
+        onclick="history.back()"
+        class="shadow-md px-8 py-3 dark:bg-darkBackground"
+      >
+        <i class="fa-solid fa-arrow-left dark:text-darkText mr-4"></i>
+        <span class="dark:text-darkText font-semibold">Back</span>
+      </button>
+    </div>
+    <!-- Main Section -->
+    <main>
+      <div class="grid lg:grid-cols-2 grid-cols-1 mt-14 gap-8 main__body">
+        <!-- <div><img class="px-10" /></div>
+        <div class="dark:text-darkText px-10">
+          <p class="font-bold text-lg mb-6">Country Name</p>
+          <div
+            class="grid lg:grid-cols-2 grid-cols-1 gap-4 font-semibold text-sm"
+          >
+            <div>
+              <ul>
+                <li class="mt-1">
+                  Native Name: <span class="font-light"></span>
+                </li>
+                <li class="mt-1">
+                  Population: <span class="font-light"></span>
+                </li>
+                <li class="mt-1">Region: <span class="font-light"></span></li>
+                <li class="mt-1">
+                  Sub Region: <span class="font-light"></span>
+                </li>
+                <li class="mt-1">Capital: <span class="font-light"></span></li>
+              </ul>
+            </div>
+            <div>
+              <ul>
+                <li class="mt-1">
+                  Top Level Domain: <span class="font-light"></span>
+                </li>
+                <li class="mt-1">
+                  Currencies: <span class="font-light"></span>
+                </li>
+                <li class="mt-1">
+                  Languages: <span class="font-light"></span>
+                </li>
+              </ul>
+            </div>
+            <p class="mt-8">
+              Border Countries:
+              <span class="font-light border ml-1 px-4 py-1">countries</span>
+            </p>
+          </div>
+        </div> -->
+      </div>
+    </main>
+    <!--Spinner-->
+    <div class="spinner hidden">
+      <div class="flex justify-center items-center">
+        <img
+          class="w-1/2 md:w-1/4"
+          src="src/image/loading-34.webp"
+          alt="loader"
+        />
+      </div>
+    </div>
+  </body>
+</html>
