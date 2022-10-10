@@ -29,6 +29,7 @@ const TIMEOUT_SEC = 10;
 const renderCountry = async function () {
   try {
     countryLayout.innerHTML = "";
+    errorHandler.innerHTML = "";
     spinner.classList.remove("hidden");
     const fetchPro = fetch(`https://restcountries.com/v3.1/all`);
     const res = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);
@@ -71,6 +72,7 @@ renderCountry();
 const searchCountry = async function (country) {
   try {
     countryLayout.innerHTML = "";
+    errorHandler.innerHTML = "";
     spinner.classList.remove("hidden");
     const fetchPro = fetch(`https://restcountries.com/v3.1/name/${country}`);
     const res = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);
@@ -110,6 +112,7 @@ const searchCountry = async function (country) {
 const renderRegion = async function (region) {
   try {
     countryLayout.innerHTML = "";
+    errorHandler.innerHTML = "";
     spinner.classList.remove("hidden");
     const fetchPro = fetch(`https://restcountries.com/v3.1/region/${region}`);
     const res = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);

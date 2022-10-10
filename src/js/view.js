@@ -57,6 +57,7 @@ window.onload = () => {
 const viewRender = async function () {
   try {
     mainBody.innerHTML = "";
+    errorHandler.innerHTML = "";
     spinner.classList.remove("hidden");
     const code = localStorage.getItem("code");
     const fetchPro = fetch(`https://restcountries.com/v3.1/alpha/${code}`);
