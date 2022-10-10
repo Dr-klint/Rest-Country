@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* npx tailwindcss -i ./src/css/style.css -o ./dist/output.css --watch */
+/* npx tailwindcss -i ./src/css/style.css -o ./src/css/output.css --watch */
 
 * {
   margin: 0;

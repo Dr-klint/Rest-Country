@@ -14,12 +14,24 @@ const htmlBody = document.querySelector(".html__body");
 const countryRegion = document.querySelector(".country__region");
 const countryView = document.querySelector("country__view");
 const spinner = document.querySelector(".spinner");
+const errorHandler = document.querySelector(".error__handler");
+
+const timeout = function (s) {
+  return new Promise(function (_, reject) {
+    setTimeout(function () {
+      reject(new Error(`Request took too long! Timeout after ${s} second`));
+    }, s * 1000);
+  });
+};
+
+const TIMEOUT_SEC = 10;
 
 const renderCountry = async function () {
   try {
     countryLayout.innerHTML = "";
     spinner.classList.remove("hidden");
-    const res = await fetch(`https://restcountries.com/v3.1/all`);
+    const fetchPro = fetch(`https://restcountries.com/v3.1/all`);
+    const res = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);
     const data = await res.json();
     if (!res.ok) throw new Error(`${data.message} (${res.status})`);
     // console.log(data);
@@ -50,7 +62,8 @@ const renderCountry = async function () {
       spinner.classList.add("hidden");
     });
   } catch (err) {
-    console.error(`${err}`);
+    spinner.classList.add("hidden");
+    errorFunction(err);
   }
 };
 renderCountry();
@@ -59,7 +72,8 @@ const searchCountry = async function (country) {
   try {
     countryLayout.innerHTML = "";
     spinner.classList.remove("hidden");
-    const res = await fetch(`https://restcountries.com/v3.1/name/${country}`);
+    const fetchPro = fetch(`https://restcountries.com/v3.1/name/${country}`);
+    const res = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);
     const data = await res.json();
     if (!res.ok) throw new Error(`${data.message} (${res.status})`);
     data.forEach((el) => {
@@ -88,7 +102,8 @@ const searchCountry = async function (country) {
       spinner.classList.add("hidden");
     });
   } catch (err) {
-    console.error(`${err}`);
+    spinner.classList.add("hidden");
+    errorFunction(err);
   }
 };
 
@@ -96,7 +111,8 @@ const renderRegion = async function (region) {
   try {
     countryLayout.innerHTML = "";
     spinner.classList.remove("hidden");
-    const res = await fetch(`https://restcountries.com/v3.1/region/${region}`);
+    const fetchPro = fetch(`https://restcountries.com/v3.1/region/${region}`);
+    const res = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);
     const data = await res.json();
     if (!res.ok) throw new Error(`${data.message} (${res.status})`);
     // console.log(data);
@@ -126,7 +142,8 @@ const renderRegion = async function (region) {
       spinner.classList.add("hidden");
     });
   } catch (err) {
-    console.error(`${err}`);
+    spinner.classList.add("hidden");
+    errorFunction(err);
   }
 };
 
@@ -185,4 +202,13 @@ window.onload = () => {
     htmlBody.classList.remove("dark");
     textContentToggle.textContent = "Dark Mode";
   }
+};
+
+//Error Handler
+const errorFunction = function (err) {
+  const html = `
+  <i class="fa-solid fa-triangle-exclamation dark:text-darkText mr-4"></i>
+  <p class="dark:text-darkText">${err.message}</p>
+  `;
+  errorHandler.insertAdjacentHTML("beforeend", html);
 };

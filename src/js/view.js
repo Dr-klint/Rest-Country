@@ -8,6 +8,17 @@ const countryView = document.querySelector("country__view");
 const iconToggle = document.querySelector(".icon__body");
 const mainBody = document.querySelector(".main__body");
 const spinner = document.querySelector(".spinner");
+const errorHandler = document.querySelector(".error__handler");
+
+const timeout = function (s) {
+  return new Promise(function (_, reject) {
+    setTimeout(function () {
+      reject(new Error(`Request took too long! Timeout after ${s} second`));
+    }, s * 1000);
+  });
+};
+
+const TIMEOUT_SEC = 10;
 
 headBtn.addEventListener("click", function () {
   console.log(`help`);
@@ -48,7 +59,8 @@ const viewRender = async function () {
     mainBody.innerHTML = "";
     spinner.classList.remove("hidden");
     const code = localStorage.getItem("code");
-    const res = await fetch(`https://restcountries.com/v3.1/alpha/${code}`);
+    const fetchPro = fetch(`https://restcountries.com/v3.1/alpha/${code}`);
+    const res = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);
     const data = await res.json();
 
     const boundaries = function () {
@@ -120,7 +132,8 @@ const viewRender = async function () {
       spinner.classList.add("hidden");
     });
   } catch (err) {
-    console.log(err);
+    spinner.classList.add("hidden");
+    errorFunction(err);
   }
 };
 viewRender();
@@ -130,3 +143,12 @@ mainBody.addEventListener("click", function (e) {
   localStorage.setItem("code", code);
   viewRender();
 });
+
+//Error Handler
+const errorFunction = function (err) {
+  const html = `
+  <i class="fa-solid fa-triangle-exclamation dark:text-darkText mr-4"></i>
+  <p class="dark:text-darkText">${err.message}</p>
+  `;
+  errorHandler.insertAdjacentHTML("beforeend", html);
+};
