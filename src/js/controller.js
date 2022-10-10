@@ -34,7 +34,7 @@ const renderCountry = async function () {
       <div class="p-4 dark:text-darkText">
         <p class="font-bold text-lg">${el.name.official}</p>
         <p class="font-semibold mt-2">
-          Population: <span class="font-light">${el.population}</span>
+          Population: <span class="font-light">${el.population.toLocaleString()}</span>
         </p>
         <p class="font-semibold">
           Capital: <span class="font-light">${el.capital || "nil"}</span>
@@ -73,7 +73,7 @@ const searchCountry = async function (country) {
         <div class="dark:text-darkText p-4">
           <p class="font-bold text-lg">${el.name.official}</p>
           <p class="font-semibold mt-2">
-            Population: <span class="font-light">${el.population}</span>
+            Population: <span class="font-light">${el.population.toLocaleString()}</span>
           </p>
           <p class="font-semibold">
             Capital: <span class="font-light">${el.capital || "nil"}</span>
@@ -111,7 +111,7 @@ const renderRegion = async function (region) {
         <div class="dark:text-darkText p-4">
           <p class="font-bold text-lg">${el.name.official}</p>
           <p class="font-semibold mt-2">
-            Population: <span class="font-light">${el.population}</span>
+            Population: <span class="font-light">${el.population.toLocaleString()}</span>
           </p>
           <p class="font-semibold">
             Capital: <span class="font-light">${el.capital || "nil"}</span>

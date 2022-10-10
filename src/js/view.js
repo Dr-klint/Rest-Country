@@ -77,7 +77,7 @@ const viewRender = async function () {
               }</span>
             </li>
             <li class="mt-1">
-              Population: <span class="font-light">${data.population}</span>
+              Population: <span class="font-light">${data.population.toLocaleString()}</span>
             </li>
             <li class="mt-1">Region: <span class="font-light">${
               data.region
