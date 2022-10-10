@@ -22,7 +22,7 @@ const renderCountry = async function () {
     const res = await fetch(`https://restcountries.com/v3.1/all`);
     const data = await res.json();
     if (!res.ok) throw new Error(`${data.message} (${res.status})`);
-    console.log(data);
+    // console.log(data);
     data.forEach((el) => {
       const markup = `
       <div class="bg-white dark:bg-darkBackground rounded overflow-hidden shadow-md mb-5 hover:cursor-pointer country__view"  data-country-name='${
@@ -99,7 +99,7 @@ const renderRegion = async function (region) {
     const res = await fetch(`https://restcountries.com/v3.1/region/${region}`);
     const data = await res.json();
     if (!res.ok) throw new Error(`${data.message} (${res.status})`);
-    console.log(data);
+    // console.log(data);
     data.forEach((el) => {
       const markup = `
       <div class="bg-white dark:bg-darkBackground rounded overflow-hidden shadow-md mb-5 hover:cursor-pointer country__view"  data-country-name='${
@@ -176,7 +176,7 @@ countryLayout.addEventListener("click", function (e) {
 // local storage
 window.onload = () => {
   const storage = localStorage.getItem("screenMode");
-  console.log(storage);
+  // console.log(storage);
   if (storage === "light") {
     htmlBody.classList.add("dark");
     textContentToggle.textContent = "Light Mode";

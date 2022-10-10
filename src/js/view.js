@@ -32,7 +32,7 @@ iconToggle.addEventListener("click", function (e) {
 // local storage
 window.onload = () => {
   const storage = localStorage.getItem("screenMode");
-  console.log(storage);
+  //   console.log(storage);
   if (storage === "light") {
     htmlBody.classList.add("dark");
     textContentToggle.textContent = "Light Mode";
